@@ -411,34 +411,43 @@ public class LogicCenter : MonoBehaviour
         speed = new FuzzySet("speed", 0, 5, 0.1);
 
         rotation = new FuzzySet("rotation", -10, 10, 0.1);
+        
+        double upBound = 5;
 
-        speed.AddMembership("Slow", new FuzzyReverseGrade(0, 1.75));
-        speed.AddMembership("Middle", new FuzzyTriangle(1, 2.5, 4));
-        speed.AddMembership("Fast", new FuzzyGrade(3.25, 5));
+        double slowBorder = 2.5;
+        double middleBorder = 3.5;
+
+        // мно-ства уверенности для скорости
+        speed.AddMembership("Slow",  new FuzzyReverseGrade(0,slowBorder));
+        speed.AddMembership("Middle", new FuzzyTrapezoid(0,slowBorder,middleBorder-1,middleBorder));
+        speed.AddMembership("Fast", new FuzzyTrapezoid(middleBorder-1, upBound, upBound +2, upBound + 2));
         rie.AddFuzzySet(speed.Name, speed);
 
-        rotation.AddMembership("Left", new FuzzyReverseGrade(-10, 0));
-        rotation.AddMembership("Forward", new FuzzyTriangle(-5, 0, 5));
-        rotation.AddMembership("Right", new FuzzyGrade(0, 10));
+
+
+        rotation.AddMembership("Left", new FuzzyTrapezoid(-12,-12,-5,5));
+        rotation.AddMembership("Forward", new FuzzyTrapezoid(-7,-1,1,7));
+        rotation.AddMembership("Right", new FuzzyTrapezoid(-5,5,12,12));
+       
         rie.AddFuzzySet(rotation.Name, rotation);
 
         ls = new FuzzySet("LeftSensor", 0, 7, 0.1);
-        ls.AddMembership("Close", new FuzzyReverseGrade(0, 2));
-        ls.AddMembership("Middle", new FuzzyTriangle(1, 3, 5));
-        ls.AddMembership("Far", new FuzzyGrade(4, 6));
+        ls.AddMembership("Close", new FuzzyTrapezoid(0, 0,2.5,3));
+        ls.AddMembership("Middle",new FuzzyTrapezoid(2.5,3,3.5,4));
+        ls.AddMembership("Far", new FuzzyGrade(3, 8));
         rie.AddFuzzySet(ls.Name, ls);
 
 
         cs = new FuzzySet("CenterSensor", 0, 7, 0.1);
-        cs.AddMembership("Close", new FuzzyReverseGrade(0, 2));
-        cs.AddMembership("Middle", new FuzzyTriangle(1, 3, 5));
-        cs.AddMembership("Far", new FuzzyGrade(4, 6));
+       cs.AddMembership("Close", new FuzzyTrapezoid(0, 0,2.5,3));
+        cs.AddMembership("Middle",new FuzzyTrapezoid(2.5,3,3.5,4));
+        cs.AddMembership("Far", new FuzzyGrade(3, 8));
         rie.AddFuzzySet(cs.Name, cs);
 
         rs = new FuzzySet("RightSensor", 0, 7, 0.1);
-        rs.AddMembership("Close", new FuzzyReverseGrade(0, 2));
-        rs.AddMembership("Middle", new FuzzyTriangle(1, 3, 5));
-        rs.AddMembership("Far", new FuzzyGrade(4, 6));
+       rs.AddMembership("Close", new FuzzyTrapezoid(0, 0,2.5,3));
+        rs.AddMembership("Middle",new FuzzyTrapezoid(2.5,3,3.5,4));
+        rs.AddMembership("Far", new FuzzyGrade(3, 8));
         rie.AddFuzzySet(rs.Name, rs);
     }
 
@@ -446,9 +455,9 @@ public class LogicCenter : MonoBehaviour
     {
        
         //
-        cs.GetMembership("Close").degree(ls.X);
-        cs.GetMembership("Middle").degree(ls.X);
-        cs.GetMembership("Far").degree(ls.X);
+        cs.GetMembership("Close").degree(cs.X);
+        cs.GetMembership("Middle").degree(cs.X);
+        cs.GetMembership("Far").degree(cs.X);
 
         ls.GetMembership("Close").degree(ls.X);
         ls.GetMembership("Middle").degree(ls.X);
