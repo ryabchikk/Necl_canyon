@@ -500,7 +500,7 @@ public class LogicCenter : MonoBehaviour
     private void SetRotation(float rt)
     {
         //�������� �� ������
-        Car.GetComponent<MoveMechanics>().Angle = rt*2;
+        Car.GetComponent<MoveMechanics>().Angle = Car.GetComponent<MoveMechanics>().Angle+rt;
     }
 
 }
