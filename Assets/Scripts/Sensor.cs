@@ -28,5 +28,8 @@ public class Sensor : MonoBehaviour
             dist = hit.distance;
             Debug.Log("Датчик: " + gameObject.name + " Координаты точки: " + hit.point + " Дистанция до точки: " + hit.distance);
         }
+        else
+            dist = 8;
     }
+
 }
