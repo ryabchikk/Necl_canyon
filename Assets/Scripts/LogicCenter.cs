@@ -412,7 +412,7 @@ public class LogicCenter : MonoBehaviour
 
         rotation = new FuzzySet("rotation", -10, 10, 0.1);
         
-        double upBound = 10;
+        double upBound = 100;
 
         double slowBorder = 3.5;
         double middleBorder = 5.5;

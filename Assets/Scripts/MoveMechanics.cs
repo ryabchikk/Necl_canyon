@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 
 public class MoveMechanics : MonoBehaviour
 {
+    [SerializeField] private Text text;
     public float speedRotate;
     public float Angle;
     public float speed;
@@ -19,6 +21,7 @@ public class MoveMechanics : MonoBehaviour
     
     void Update()
     {
+        text.text = speed.ToString();
         Move();
         RotateCar();
     }
@@ -33,7 +36,7 @@ public class MoveMechanics : MonoBehaviour
     }
 
     private void Move() 
-    { 
+    {
         Vector3 _moveVector;
         _moveVector = Vector3.zero;
         _moveVector += transform.right * speed;
@@ -42,7 +45,7 @@ public class MoveMechanics : MonoBehaviour
     
     private void RotateCar() 
     {
-        transform.rotation =Quaternion.Lerp(transform.rotation,Quaternion.Euler(0, Angle, 0), speedRotate);
+        transform.rotation =Quaternion.Lerp(transform.rotation,Quaternion.Euler(0, Angle, 0),speedRotate);
         //transform.rotation = Quaternion.Euler(0, Angle, 0);
     }
 }
