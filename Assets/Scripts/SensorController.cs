@@ -6,6 +6,10 @@ public class SensorController : MonoBehaviour
 {
     [SerializeField] Sensor[] sensors;
     public float[] masDist;
+    private void Start()
+    {
+        masDist = new float[sensors.Length];
+    }
     void Update()
     {
         for (int i = 0; i < sensors.Length; i++) 
