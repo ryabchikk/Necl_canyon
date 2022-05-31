@@ -26,10 +26,11 @@ public class Sensor : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             dist = hit.distance;
-            Debug.Log("Датчик: " + gameObject.name + " Координаты точки: " + hit.point + " Дистанция до точки: " + hit.distance);
         }
         else
             dist = 8;
+
+        Debug.Log("Датчик: " + gameObject.name + " Координаты точки: " + hit.point + " Дистанция до точки: " + dist);
     }
 
 }

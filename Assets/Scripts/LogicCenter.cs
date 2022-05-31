@@ -67,7 +67,7 @@ public class LogicCenter : MonoBehaviour
         rule.AddAntecedent(new Clause(ls, "Is", "Close"));
         rule.AddAntecedent(new Clause(cs, "Is", "Middle"));
         rule.AddAntecedent(new Clause(rs, "Is", "Far"));
-        rule.Consequent = new Clause(speed, "Is", "Slow");
+        rule.Consequent = new Clause(speed, "Is", "Middle");
         rie.AddRule(rule);
 
         rule = new Rule("Rule 6");
@@ -81,7 +81,7 @@ public class LogicCenter : MonoBehaviour
         rule.AddAntecedent(new Clause(ls, "Is", "Close"));
         rule.AddAntecedent(new Clause(cs, "Is", "Far"));
         rule.AddAntecedent(new Clause(rs, "Is", "Middle"));
-        rule.Consequent = new Clause(speed, "Is", "Middle");
+        rule.Consequent = new Clause(speed, "Is", "Fast");
         rie.AddRule(rule);
 
         rule = new Rule("Rule 8");
@@ -137,7 +137,7 @@ public class LogicCenter : MonoBehaviour
         rule.AddAntecedent(new Clause(ls, "Is", "Middle"));
         rule.AddAntecedent(new Clause(cs, "Is", "Far"));
         rule.AddAntecedent(new Clause(rs, "Is", "Close"));
-        rule.Consequent = new Clause(speed, "Is", "Middle");
+        rule.Consequent = new Clause(speed, "Is", "Fast");
         rie.AddRule(rule);
 
         rule = new Rule("Rule 16");
@@ -179,7 +179,7 @@ public class LogicCenter : MonoBehaviour
         rule.AddAntecedent(new Clause(ls, "Is", "Far"));
         rule.AddAntecedent(new Clause(cs, "Is", "Middle"));
         rule.AddAntecedent(new Clause(rs, "Is", "Close"));
-        rule.Consequent = new Clause(speed, "Is", "Slow");
+        rule.Consequent = new Clause(speed, "Is", "Middle");
         rie.AddRule(rule);
 
         rule = new Rule("Rule 22");
@@ -267,7 +267,7 @@ public class LogicCenter : MonoBehaviour
         rule.AddAntecedent(new Clause(ls, "Is", "Close"));
         rule.AddAntecedent(new Clause(cs, "Is", "Far"));
         rule.AddAntecedent(new Clause(rs, "Is", "Middle"));
-        rule.Consequent = new Clause(rotation, "Is", "Forward");
+        rule.Consequent = new Clause(rotation, "Is", "Right");
         rie.AddRule(rule);
 
         rule = new Rule("Rule 108");
@@ -323,7 +323,7 @@ public class LogicCenter : MonoBehaviour
         rule.AddAntecedent(new Clause(ls, "Is", "Middle"));
         rule.AddAntecedent(new Clause(cs, "Is", "Far"));
         rule.AddAntecedent(new Clause(rs, "Is", "Close"));
-        rule.Consequent = new Clause(rotation, "Is", "Forward");
+        rule.Consequent = new Clause(rotation, "Is", "Left");
         rie.AddRule(rule);
 
         rule = new Rule("Rule 116");
@@ -412,14 +412,14 @@ public class LogicCenter : MonoBehaviour
 
         rotation = new FuzzySet("rotation", -10, 10, 0.1);
         
-        double upBound = 5;
+        double upBound = 10;
 
-        double slowBorder = 2.5;
-        double middleBorder = 3.5;
+        double slowBorder = 3.5;
+        double middleBorder = 5.5;
 
         // мно-ства уверенности для скорости
         speed.AddMembership("Slow",  new FuzzyReverseGrade(0,slowBorder));
-        speed.AddMembership("Middle", new FuzzyTrapezoid(0,slowBorder,middleBorder-1,middleBorder));
+        speed.AddMembership("Middle", new FuzzyTrapezoid(slowBorder-1, slowBorder,middleBorder-1,middleBorder));
         speed.AddMembership("Fast", new FuzzyTrapezoid(middleBorder-1, upBound, upBound +2, upBound + 2));
         rie.AddFuzzySet(speed.Name, speed);
 
@@ -432,22 +432,22 @@ public class LogicCenter : MonoBehaviour
         rie.AddFuzzySet(rotation.Name, rotation);
 
         ls = new FuzzySet("LeftSensor", 0, 7, 0.1);
-        ls.AddMembership("Close", new FuzzyTrapezoid(0, 0,2.5,3));
-        ls.AddMembership("Middle",new FuzzyTrapezoid(2.5,3,3.5,4));
-        ls.AddMembership("Far", new FuzzyGrade(3, 8));
+        ls.AddMembership("Close", new FuzzyTrapezoid(0, 0,1.5,2));
+        ls.AddMembership("Middle",new FuzzyTrapezoid(1.5,2,2.5,3));
+        ls.AddMembership("Far", new FuzzyGrade(2.5, 10));
         rie.AddFuzzySet(ls.Name, ls);
 
 
         cs = new FuzzySet("CenterSensor", 0, 7, 0.1);
-       cs.AddMembership("Close", new FuzzyTrapezoid(0, 0,2.5,3));
-        cs.AddMembership("Middle",new FuzzyTrapezoid(2.5,3,3.5,4));
-        cs.AddMembership("Far", new FuzzyGrade(3, 8));
+        cs.AddMembership("Close", new FuzzyTrapezoid(0, 0,1.5,2));
+        cs.AddMembership("Middle", new FuzzyTrapezoid(1.5, 2, 2.5, 3));
+        cs.AddMembership("Far", new FuzzyGrade(2.5, 10));
         rie.AddFuzzySet(cs.Name, cs);
 
         rs = new FuzzySet("RightSensor", 0, 7, 0.1);
-       rs.AddMembership("Close", new FuzzyTrapezoid(0, 0,2.5,3));
-        rs.AddMembership("Middle",new FuzzyTrapezoid(2.5,3,3.5,4));
-        rs.AddMembership("Far", new FuzzyGrade(3, 8));
+        rs.AddMembership("Close", new FuzzyTrapezoid(0, 0,1.5,2));
+        rs.AddMembership("Middle", new FuzzyTrapezoid(1.5, 2, 2.5, 3));
+        rs.AddMembership("Far", new FuzzyGrade(2.5, 10));
         rie.AddFuzzySet(rs.Name, rs);
     }
 

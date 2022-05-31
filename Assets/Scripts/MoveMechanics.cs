@@ -42,6 +42,7 @@ public class MoveMechanics : MonoBehaviour
     
     private void RotateCar() 
     {
-        transform.rotation =Quaternion.Lerp(transform.rotation,Quaternion.Euler(0, Angle, 0),Time.deltaTime* speedRotate);
+        transform.rotation =Quaternion.Lerp(transform.rotation,Quaternion.Euler(0, Angle, 0), speedRotate);
+        //transform.rotation = Quaternion.Euler(0, Angle, 0);
     }
 }
