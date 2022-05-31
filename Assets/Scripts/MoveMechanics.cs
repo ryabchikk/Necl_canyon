@@ -19,7 +19,17 @@ public class MoveMechanics : MonoBehaviour
     void Update()
     {
         Move();
+        CalcAngle();
         RotateCar();
+    }
+
+    void CalcAngle()
+    {
+        while (Angle < 0)
+            Angle += 360.0f;
+        while (Angle > 360.0)
+            Angle -= 360.0f;
+        Debug.Log("Angle = " + Angle);
     }
 
     private void Move() 
