@@ -34,7 +34,7 @@ public class LogicCenter : MonoBehaviour
 
     public void AddRulesSpeed()
     {
-        //Здесь правила
+        //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         Rule rule = new Rule("Rule 1");
         rule.AddAntecedent(new Clause(ls, "Is", "Close"));
         rule.AddAntecedent(new Clause(cs, "Is", "Close"));
@@ -220,7 +220,7 @@ public class LogicCenter : MonoBehaviour
 
     public void AddRulesRotation()
     {
-        //Здесь правила
+        //пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         Rule rule = new Rule("Rule 101");
         rule.AddAntecedent(new Clause(ls, "Is", "Close"));
         rule.AddAntecedent(new Clause(cs, "Is", "Close"));
@@ -446,9 +446,9 @@ public class LogicCenter : MonoBehaviour
     {
        
         //
-        ls.GetMembership("Close").degree(ls.X);
-        ls.GetMembership("Middle").degree(ls.X);
-        ls.GetMembership("Far").degree(ls.X);
+        cs.GetMembership("Close").degree(ls.X);
+        cs.GetMembership("Middle").degree(ls.X);
+        cs.GetMembership("Far").degree(ls.X);
 
         ls.GetMembership("Close").degree(ls.X);
         ls.GetMembership("Middle").degree(ls.X);
@@ -462,8 +462,8 @@ public class LogicCenter : MonoBehaviour
 
         rie.Infer(rotation);
 
-        Debug.Log("Подсчитанная скорость = " + speed.X);
-        Debug.Log("Подсчитанный поворот  = " + rotation.X);
+        Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ = " + speed.X);
+        Debug.Log("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ  = " + rotation.X);
 
         if(!Double.IsNaN(speed.X))
             SetSpeed((float)speed.X);
@@ -484,13 +484,13 @@ public class LogicCenter : MonoBehaviour
 
     void SetSpeed(float spd)
     {
-        //Заменить на сеттер
+        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         Car.GetComponent<MoveMechanics>().speed = spd;
     }
 
     void SetRotation(float rt)
     {
-        //Заменить на сеттер
+        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
         Car.GetComponent<MoveMechanics>().Angle += rt;
     }
 
