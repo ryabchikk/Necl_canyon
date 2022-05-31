@@ -5,10 +5,19 @@ using UnityEngine;
 public class Sensor : MonoBehaviour
 {
     public float dist;
-    void Update()
+    private void Start()
     {
-        Debug.DrawRay(transform.position, transform.forward);
-        CreateRay();
+        StartCoroutine(RayCoroutine());
+    }
+
+    IEnumerator RayCoroutine()
+    {
+        while (true) 
+        {
+            yield return new WaitForSeconds(0.001f);
+            CreateRay();
+            
+        }
     }
     private void CreateRay() 
     { 
