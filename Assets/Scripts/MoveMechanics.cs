@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 
 public class MoveMechanics : MonoBehaviour
@@ -20,6 +21,15 @@ public class MoveMechanics : MonoBehaviour
     {
         Move();
         RotateCar();
+    }
+
+    void CalcAngle()
+    {
+        while (Angle < 0)
+            Angle += 360.0f;
+        while (Angle > 360.0)
+            Angle -= 360.0f;
+        Debug.Log("Angle = " + Angle);
     }
 
     private void Move() 

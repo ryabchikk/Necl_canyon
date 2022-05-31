@@ -23,13 +23,13 @@ public class LogicCenter : MonoBehaviour
     {
         CreateSystem();
         AddRulesSpeed();
+        AddRulesRotation();
     }
 
     public void Update()
     {
         GetSensors();
         Run();
-        AddRulesRotation();
     }
 
     public void AddRulesSpeed()
@@ -481,7 +481,7 @@ public class LogicCenter : MonoBehaviour
             SetRotation((float)rotation.X);
     }
 
-    void GetSensors()
+    public void GetSensors()
     {
         if (SensorInfo.GetComponent<SensorController>().masDist is object)
         {
@@ -491,16 +491,16 @@ public class LogicCenter : MonoBehaviour
         }
     }
 
-    void SetSpeed(float spd)
+    private void SetSpeed(float spd)
     {
         //�������� �� ������
         Car.GetComponent<MoveMechanics>().speed = spd;
     }
 
-    void SetRotation(float rt)
+    private void SetRotation(float rt)
     {
         //�������� �� ������
-        Car.GetComponent<MoveMechanics>().Angle += rt;
+        Car.GetComponent<MoveMechanics>().Angle = Car.GetComponent<MoveMechanics>().Angle+rt;
     }
 
 }
