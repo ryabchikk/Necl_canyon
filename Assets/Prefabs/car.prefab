@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 3887372266388876558}
   m_Layer: 0
   m_Name: car
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,9 +111,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5e7bdad7c863eb408e2c4ebc2e5f099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedRotate: 0.5
+  speedRotate: 0.1
   Angle: 0
-  speed: 5
+  speed: 2
 --- !u!1 &4503278529980540429
 GameObject:
   m_ObjectHideFlags: 0
