@@ -43,4 +43,8 @@ public class UiCenter : MonoBehaviour
         SceneManager.LoadScene(level);
         Time.timeScale = 1;
     }
+    public void StopTime() 
+    {
+        Time.timeScale = 0;
+    }
 }
