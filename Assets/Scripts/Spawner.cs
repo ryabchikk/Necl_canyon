@@ -23,6 +23,7 @@ public class Spawner : MonoBehaviour
             {
                 if(hit.transform.name == "Floor")
                 {
+                    hit.point += new Vector3(0, 0.1f, 0);
                     Ray[] checks = new Ray[8];
                     RaycastHit temphit;
                     float[] dists = new float[8];
@@ -38,12 +39,12 @@ public class Spawner : MonoBehaviour
 
                     for(int i=0; i<8; ++i)
                     {
-                        Physics.Raycast(checks[i], out temphit);
-                        if(temphit.distance != float.NaN)
+                        if(Physics.Raycast(checks[i], out temphit))
                             dists[i] = temphit.distance;
                         else
                             dists[i] = 8;
 
+                        //Debug.Log("Куб-датчик " + i + " = " + temphit.distance);
                         Debug.Log("Куб-датчик " + i  + " = " + dists[i]);
                     }
 
