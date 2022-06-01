@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class MoveMechanics : MonoBehaviour
 {
+    [SerializeField] private Text text;
     public float speedRotate;
     public float Angle;
     public float speed;
@@ -20,6 +21,7 @@ public class MoveMechanics : MonoBehaviour
     
     void Update()
     {
+        text.text = speed.ToString();
         Move();
         RotateCar();
     }
