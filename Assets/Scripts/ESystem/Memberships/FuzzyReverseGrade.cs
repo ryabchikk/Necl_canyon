@@ -5,12 +5,12 @@ using System.Text;
 
 namespace FuzzyLogic.Memberships
 {
-    public class FuzzyReversLine : Membership
+    public class FuzzyReverseGrade : Membership
     {
         public double m_x0;
         public double m_x1;
 
-        public FuzzyReversLine(double x0, double x1)
+        public FuzzyReverseGrade(double x0, double x1)
         {
             m_x0 = x0;
             m_x1 = x1;

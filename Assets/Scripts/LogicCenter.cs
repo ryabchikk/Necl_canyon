@@ -379,7 +379,7 @@ public class LogicCenter : MonoBehaviour
         rule.AddAntecedent(new Clause(ls, "Is", "Far"));
         rule.AddAntecedent(new Clause(cs, "Is", "Middle"));
         rule.AddAntecedent(new Clause(rs, "Is", "Far"));
-        rule.Consequent = new Clause(rotation, "Is", "Forward");
+        rule.Consequent = new Clause(rotation, "Is", "Right");
         rie.AddRule(rule);
 
         rule = new Rule("Rule 124");
@@ -418,7 +418,7 @@ public class LogicCenter : MonoBehaviour
         double middleBorder = 5.5;
 
         // мно-ства уверенности для скорости
-        speed.AddMembership("Slow",  new FuzzyReversLine(0,slowBorder));
+        speed.AddMembership("Slow",  new FuzzyReverseGrade(0,slowBorder));
         speed.AddMembership("Middle", new FuzzyTrapezoid(slowBorder-1, slowBorder,middleBorder-1,middleBorder));
         speed.AddMembership("Fast", new FuzzyTrapezoid(middleBorder-1, upBound, upBound +2, upBound + 2));
         rie.AddFuzzySet(speed.Name, speed);
@@ -434,20 +434,20 @@ public class LogicCenter : MonoBehaviour
         ls = new FuzzySet("LeftSensor", 0, 7, 0.1);
         ls.AddMembership("Close", new FuzzyTrapezoid(0, 0,1.5,2));
         ls.AddMembership("Middle",new FuzzyTrapezoid(1.5,2,2.5,3));
-        ls.AddMembership("Far", new FuzzyLine(2.5, 10));
+        ls.AddMembership("Far", new FuzzyGrade(2.5, 10));
         rie.AddFuzzySet(ls.Name, ls);
 
 
         cs = new FuzzySet("CenterSensor", 0, 7, 0.1);
         cs.AddMembership("Close", new FuzzyTrapezoid(0, 0,1.5,2));
         cs.AddMembership("Middle", new FuzzyTrapezoid(1.5, 2, 2.5, 3));
-        cs.AddMembership("Far", new FuzzyLine(2.5, 10));
+        cs.AddMembership("Far", new FuzzyGrade(2.5, 10));
         rie.AddFuzzySet(cs.Name, cs);
 
         rs = new FuzzySet("RightSensor", 0, 7, 0.1);
         rs.AddMembership("Close", new FuzzyTrapezoid(0, 0,1.5,2));
         rs.AddMembership("Middle", new FuzzyTrapezoid(1.5, 2, 2.5, 3));
-        rs.AddMembership("Far", new FuzzyLine(2.5, 10));
+        rs.AddMembership("Far", new FuzzyGrade(2.5, 10));
         rie.AddFuzzySet(rs.Name, rs);
     }
 
